@@ -1,0 +1,41 @@
+{
+  "canvases": {
+    "AO-Vol1構思.canvas": {
+      "schemaVersion": 2,
+      "frames": {},
+      "cardVersions": {},
+      "noteVersions": {},
+      "frameVersions": {}
+    },
+    "DK-Vol1構思.canvas": {
+      "schemaVersion": 2,
+      "frames": {},
+      "cardVersions": {},
+      "noteVersions": {},
+      "frameVersions": {}
+    }
+  },
+  "repairBackups": [],
+  "settings": {
+    "defaultGap": 36,
+    "defaultPadding": 46,
+    "defaultNestedSpacing": 16,
+    "defaultNestedInset": 20,
+    "followFrameVersionName": false,
+    "toolbar": {
+      "createFrameButtons": true,
+      "versionNavigation": true,
+      "versionOverview": true,
+      "versionMetadata": true,
+      "duplicateVersion": true,
+      "blankVersion": true,
+      "deleteVersion": true,
+      "pause": true,
+      "direction": true,
+      "gap": false,
+      "padding": false,
+      "nestedSpacing": false,
+      "nestedInset": false
+    }
+  }
+}

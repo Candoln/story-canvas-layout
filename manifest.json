@@ -1,0 +1,9 @@
+{
+  "id": "story-canvas-layout",
+  "name": "Story Canvas Layout",
+  "version": "0.6.16",
+  "minAppVersion": "1.5.0",
+  "description": "Story-focused Canvas layout and versioning with state repair for Obsidian.",
+  "author": "Candoln + ChatGPT",
+  "isDesktopOnly": false
+}

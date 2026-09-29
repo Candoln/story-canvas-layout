@@ -1,0 +1,596 @@
+/* 0.1 used a ::after pseudo label in addition to the native group label.
+   It is intentionally removed in 0.2 to prevent the duplicated title bug. */
+
+.story-layout-insertion-indicator {
+  position: fixed;
+  z-index: 999999;
+  pointer-events: none;
+  border-radius: 999px;
+  background: var(--interactive-accent);
+  box-shadow: 0 0 0 2px var(--background-primary);
+}
+
+.story-layout-card-menu-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-inline-start: 2px;
+}
+
+.story-layout-card-menu-button {
+  cursor: grab;
+}
+
+.story-layout-card-menu-button:active {
+  cursor: grabbing;
+}
+
+
+.story-layout-popup-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding-inline-start: 4px;
+  margin-inline-start: 4px;
+  border-inline-start: 1px solid var(--background-modifier-border);
+}
+
+.story-layout-popup-button {
+  flex: 0 0 auto;
+}
+
+
+.story-layout-frame.story-layout-paused > .canvas-node-container {
+  outline: 2px dashed var(--text-muted);
+  outline-offset: 2px;
+  opacity: 0.92;
+}
+
+
+
+
+.story-card-version-badge {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  z-index: 20;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.25;
+  pointer-events: none;
+  user-select: none;
+}
+
+.story-version-counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  padding-inline: 4px;
+  font-size: 11px;
+  color: var(--text-muted);
+  user-select: none;
+}
+
+
+.story-version-overview {
+  min-width: min(620px, 80vw);
+}
+
+.story-version-overview-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.story-version-overview-header h2 {
+  margin: 0;
+}
+
+.story-version-overview-count {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.story-version-overview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: min(65vh, 720px);
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.story-version-overview-item {
+  padding: 12px 14px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-secondary);
+  cursor: pointer;
+}
+
+.story-version-overview-item:hover {
+  background: var(--background-modifier-hover);
+}
+
+.story-version-overview-item.is-active {
+  border-color: var(--interactive-accent);
+}
+
+.story-version-overview-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.story-version-overview-number {
+  font-weight: 600;
+}
+
+.story-version-overview-active {
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  font-size: 10px;
+}
+
+.story-version-overview-preview {
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+
+/* 0.4.2: keep the version overview inside the viewport.
+   Only the version list is allowed to scroll vertically. */
+.modal.story-version-overview-modal {
+  width: min(700px, calc(100vw - 48px));
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 48px);
+  overflow: hidden;
+}
+
+.modal.story-version-overview-modal .modal-content {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.story-version-overview {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.story-version-overview-header,
+.story-version-overview-list,
+.story-version-overview-item {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.story-version-overview-list {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.story-version-overview-item {
+  width: 100%;
+}
+
+.story-version-overview-preview {
+  max-width: 100%;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+.story-version-rename {
+  min-width: min(420px, calc(100vw - 64px));
+}
+
+.story-version-rename-help {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.story-version-rename-input input {
+  width: 100%;
+}
+
+.story-version-rename-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+
+.story-note-version-file {
+  margin-top: 6px;
+  color: var(--text-faint);
+  font-size: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.story-frame-version-hidden {
+  display: none !important;
+}
+
+.story-frame-version-badge {
+  position: absolute;
+  right: 10px;
+  top: -24px;
+  z-index: 30;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.25;
+  pointer-events: none;
+  user-select: none;
+}
+
+.story-frame-version-preview {
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--background-primary);
+  color: var(--text-muted);
+  font-family: var(--font-interface);
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+
+.story-frame-version-visual-wrap {
+  margin: 8px 0 10px;
+  padding: 12px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background:
+    radial-gradient(
+      circle at 1px 1px,
+      var(--background-modifier-border) 1px,
+      transparent 0
+    );
+  background-size: 12px 12px;
+  overflow: hidden;
+}
+
+.story-frame-thumb {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  min-height: 78px;
+  max-height: 150px;
+  padding: 10px;
+  border: 2px solid var(--background-modifier-border-hover);
+  border-radius: 8px;
+  background: var(--background-primary);
+}
+
+.story-frame-thumb.is-vertical {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.story-frame-thumb.is-horizontal {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.story-frame-thumb-item {
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 42px;
+  min-height: 18px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-secondary);
+}
+
+.story-frame-thumb.is-vertical .story-frame-thumb-item {
+  width: 72%;
+  height: 20px;
+}
+
+.story-frame-thumb.is-horizontal .story-frame-thumb-item {
+  width: 46px;
+  height: 54px;
+}
+
+.story-frame-thumb-item.is-text::after,
+.story-frame-thumb-item.is-note::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: 7px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--text-faint);
+  box-shadow:
+    0 5px 0 var(--text-faint),
+    0 10px 0 var(--text-faint);
+  opacity: 0.65;
+}
+
+.story-frame-thumb-item.is-note {
+  border-style: dashed;
+}
+
+.story-frame-thumb-item.is-nested {
+  padding: 5px;
+  min-width: 58px;
+  min-height: 38px;
+  border-width: 2px;
+  background: var(--background-primary-alt);
+}
+
+.story-frame-thumb.is-vertical .story-frame-thumb-item.is-nested {
+  width: 82%;
+  height: 46px;
+  margin-left: 12px;
+}
+
+.story-frame-thumb.is-horizontal .story-frame-thumb-item.is-nested {
+  width: 64px;
+  height: 64px;
+  margin-top: 10px;
+}
+
+.story-frame-thumb-nested-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  height: 100%;
+  justify-content: center;
+}
+
+.story-frame-thumb-nested-bar {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--background-modifier-border-hover);
+}
+
+.story-frame-thumb-item.is-missing {
+  border-style: dotted;
+  opacity: 0.5;
+}
+
+.story-frame-thumb-more,
+.story-frame-thumb-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  min-height: 22px;
+  padding: 3px 6px;
+  border-radius: 5px;
+  color: var(--text-muted);
+  font-size: 11px;
+  background: var(--background-secondary);
+}
+
+.story-frame-thumb.is-vertical .story-frame-thumb-more {
+  width: 54px;
+}
+
+.story-frame-version-preview {
+  margin-top: 0;
+}
+
+
+.story-version-overview-meta {
+  justify-content: space-between;
+}
+
+.story-version-overview-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.story-version-reorder-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+.story-version-reorder-button {
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+}
+
+.story-version-reorder-button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.story-version-overview-item.is-reordering {
+  opacity: 0.7;
+}
+
+
+.story-note-version-badge.is-broken {
+  border-style: dashed;
+  font-weight: 700;
+}
+
+.story-repair-broken-item {
+  border-style: dashed;
+}
+
+.story-repair-broken-path,
+.story-repair-backup-date {
+  margin: 6px 0;
+  color: var(--text-muted);
+  font-family: var(--font-monospace);
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+.story-repair-warning {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  background: var(--background-secondary);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.story-repair-reason {
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--background-secondary);
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.story-repair-empty {
+  padding: 18px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+
+/* 0.6.5 coexistence: keep Story Layout additions self-contained inside
+   Canvas menus that may also be extended by Advanced Canvas. */
+.story-layout-popup-tools,
+.story-layout-card-menu-tools {
+  flex: 0 0 auto;
+  min-width: 0;
+  max-width: max-content;
+}
+
+.story-layout-popup-tools > *,
+.story-layout-card-menu-tools > * {
+  flex-shrink: 0;
+}
+
+
+/* 0.6.6 — Bottom Card Menu icon sizing.
+   Match the visual weight of Obsidian / Advanced Canvas native-style add buttons
+   without changing Popup Toolbar icons or Story Layout behavior. */
+.story-layout-card-menu-button svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.9;
+}
+
+.story-layout-card-menu-button {
+  --icon-size: 24px;
+}
+
+
+/* 0.6.7 — Frame Version descriptions replace structural thumbnails. */
+.story-frame-version-description {
+  margin: 10px 0;
+  min-height: 68px;
+  padding: 12px 14px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.story-version-field-label {
+  display: block;
+  margin: 12px 0 6px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.story-frame-version-description-input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 110px;
+  resize: vertical;
+}
+
+
+/* 0.6.13 — managed Frame persistence diagnostics */
+.story-managed-frame-diagnostics-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 12px;
+}
+
+.story-managed-frame-diagnostics-table th,
+.story-managed-frame-diagnostics-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  text-align: left;
+}
+
+.story-managed-frame-diagnostics-table tr.is-selected {
+  font-weight: 600;
+}
+
+
+/* 0.6.16 — Obsidian Mobile support */
+.is-mobile .story-layout-card-menu-button {
+  min-width: 42px;
+  min-height: 42px;
+  width: 42px;
+  height: 42px;
+  padding: 8px;
+}
+
+.is-mobile .story-layout-card-menu-button svg {
+  width: 26px;
+  height: 26px;
+}
+
+.is-mobile .story-layout-popup-tools button,
+.is-mobile .story-layout-popup-tools .clickable-icon {
+  min-width: 38px;
+  min-height: 38px;
+}
+
+.is-mobile .story-version-overview-modal .modal,
+.is-mobile .story-managed-frame-diagnostics .modal {
+  max-width: calc(100vw - 24px);
+}
+
+.is-mobile .story-frame-version-description-input {
+  font-size: 16px;
+}
